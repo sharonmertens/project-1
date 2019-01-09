@@ -41,27 +41,27 @@ $(() => {
 
                 $.ajax(
                     {
-                      url:  data.homeworld
+                      url:  data.species
                     }
                   ).then (
 
                       (data) => {
                         // console.log(data);
-                        const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                        $('.luke').append($homeworld);
+                        const $species = $('<li>').text('Species: ' + data.name);
+                        $('.luke').append($species);
                       }
                     )
 
                   $.ajax(
                       {
-                        url:  data.species
+                        url:  data.homeworld
                       }
                     ).then (
 
                         (data) => {
                           // console.log(data);
-                          const $species = $('<li>').text('Species: ' + data.name);
-                          $('.luke').append($species);
+                          const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                          $('.luke').append($homeworld);
                         }
                       )
 
@@ -76,7 +76,6 @@ $(() => {
       )
 
 // ======== R2D2 ==============
-
 // create click event for R2D2 button
     })
       $('input[id="r2d2"]').on('click', (event) => {
@@ -154,7 +153,6 @@ $(() => {
       })
 
 // ======== C3PO ==============
-
 // create click event for C3PO button
 
       $('input[id="c3po"]').on('click', (event) => {
@@ -221,7 +219,6 @@ $(() => {
       })
 
 // ======== DARTH VADER ==============
-
 // create click event for Darth Vader button
 
     $('input[id="darth"]').on('click', (event) => {
@@ -292,77 +289,147 @@ $(() => {
       )
 
     })
-    // ======== PRINCESS LEIA ==============
+// ======== PRINCESS LEIA ==============
+// create click event for Princess Leia button
 
-    // create click event for Princess Leia button
+    $('input[id="leia"]').on('click', (event) => {
+        $.ajax(
+            {
+              url: "https://swapi.co/api/people/5"
+            }
+        ).then (
+            (data) => {
+              console.log(data);
+              const $leia = $('<h2>').text(data.name);
+              $('.leia').append($leia);
 
-        $('input[id="leia"]').on('click', (event) => {
-            $.ajax(
-                {
-                  url: "https://swapi.co/api/people/5"
-                }
-            ).then (
-                (data) => {
-                  console.log(data);
-                  const $leia = $('<h2>').text(data.name);
-                  $('.leia').append($leia);
+              const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+              $('.leia').append($birthYear);
 
-                  const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-                  $('.leia').append($birthYear);
+              const $gender = $('<li>').text('Gender: ' + data.gender);
+              $('.leia').append($gender);
 
-                  const $gender = $('<li>').text('Gender: ' + data.gender);
-                  $('.leia').append($gender);
+              const $height = $('<li>').text('Height: ' + data.height);
+              $('.leia').append($height);
 
-                  const $height = $('<li>').text('Height: ' + data.height);
-                  $('.leia').append($height);
+              const $mass = $('<li>').text('Mass: ' + data.mass);
+              $('.leia').append($mass);
 
-                  const $mass = $('<li>').text('Mass: ' + data.mass);
-                  $('.leia').append($mass);
+              const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+              $('.leia').append($eyeColor);
 
-                  const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-                  $('.leia').append($eyeColor);
+              const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+              $('.leia').append($hairColor);
 
-                  const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-                  $('.leia').append($hairColor);
+              const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+              $('.leia').append($skinColor);
 
-                  const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-                  $('.leia').append($skinColor);
+                $.ajax(
+                    {
+                      url:  data.homeworld
+                    }
+                  ).then (
 
-                    $.ajax(
-                        {
-                          url:  data.homeworld
-                        }
-                      ).then (
+                      (data) => {
+                        // console.log(data);
+                        const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                        $('.leia').append($homeworld);
+                      }
+                    )
 
-                          (data) => {
-                            // console.log(data);
-                            const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                            $('.leia').append($homeworld);
-                          }
-                        )
-
-                  $.ajax(
-                              {
+                $.ajax(
+                      {
                         url:  data.species
+                      }
+                    ).then (
+
+                        (data) => {
+                          // console.log(data);
+                          const $species = $('<li>').text('Species: ' + data.name);
+                          $('.leia').append($species);
                         }
-                      ).then (
+                      )
 
-                            (data) => {
-                              // console.log(data);
-                              const $species = $('<li>').text('Species: ' + data.name);
-                              $('.leia').append($species);
-                            }
-                          )
-
-                // turn off button
-                $(event.target).off();
-                },
-                () => {
-                    console.log('bad request');
-                }
+            // turn off button
+            $(event.target).off();
+            },
+            () => {
+                console.log('bad request');
+            }
           )
 
         })
+
+// ======== HAN SOLO ==============
+// create click event for Han Solo button
+
+    $('input[id="han"]').on('click', (event) => {
+      $.ajax(
+        {
+          url: "https://swapi.co/api/people/14"
+        }
+      ).then (
+        (data) => {
+          console.log(data);
+          const $han = $('<h2>').text(data.name);
+          $('.han').append($han);
+
+          const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+          $('.han').append($birthYear);
+
+          const $gender = $('<li>').text('Gender: ' + data.gender);
+          $('.han').append($gender);
+
+          const $height = $('<li>').text('Height: ' + data.height);
+          $('.han').append($height);
+
+          const $mass = $('<li>').text('Mass: ' + data.mass);
+          $('.han').append($mass);
+
+          const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+          $('.han').append($eyeColor);
+
+          const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+          $('.han').append($hairColor);
+
+          const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+          $('.han').append($skinColor);
+
+              $.ajax(
+                {
+                  url: data.homeworld
+                }
+              ).then(
+                (data) => {
+                  // console.log(data);
+                  const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                  $('.han').append($homeworld);
+                }
+              )
+
+              $.ajax(
+                    {
+                      url:  data.species
+                    }
+                  ).then (
+
+                      (data) => {
+                        // console.log(data);
+                        const $species = $('<li>').text('Species: ' + data.name);
+                        $('.han').append($species);
+                      }
+                    )
+
+          // turn off button
+          $(event.target).off();
+          },
+          () => {
+              console.log('bad request');
+      })
+    });
+
+
+
 
 // === closes jquery
 });
