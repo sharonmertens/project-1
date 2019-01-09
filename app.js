@@ -216,6 +216,76 @@ $(() => {
 
       })
 
+// ======== DARTH VADER ==============
+
+// create click event for Darth Vader button
+
+    $('input[id="darth"]').on('click', (event) => {
+        $.ajax(
+            {
+              url: "https://swapi.co/api/people/4"
+            }
+        ).then (
+            (data) => {
+              console.log(data);
+              const $darth = $('<h2>').text(data.name);
+              $('.darth').append($darth);
+
+              const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+              $('.darth').append($birthYear);
+
+              const $gender = $('<li>').text('Gender: ' + data.gender);
+              $('.darth').append($gender);
+
+              const $height = $('<li>').text('Height: ' + data.height);
+              $('.darth').append($height);
+
+              const $mass = $('<li>').text('Mass: ' + data.mass);
+              $('.darth').append($mass);
+
+              const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+              $('.darth').append($eyeColor);
+
+              const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+              $('.darth').append($hairColor);
+
+              const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+              $('.darth').append($skinColor);
+
+                $.ajax(
+                    {
+                      url:  data.homeworld
+                    }
+                  ).then (
+
+                      (data) => {
+                        // console.log(data);
+                        const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                        $('.darth').append($homeworld);
+                      }
+                    )
+
+              $.ajax(
+                          {
+                    url:  data.species
+                    }
+                  ).then (
+
+                        (data) => {
+                          // console.log(data);
+                          const $species = $('<li>').text('Species: ' + data.name);
+                          $('.darth').append($species);
+                        }
+                      )
+
+
+            },
+            () => {
+                console.log('bad request');
+            }
+      )
+
+    })
 
 // === closes jquery
 });
