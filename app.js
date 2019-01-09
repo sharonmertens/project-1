@@ -17,10 +17,27 @@ $(() => {
             // create luke skywalker
             const $luke = $('<h2>').text(data.name);
             $('.luke').append($luke);
-            const $birthYear = $('<li>').text('year of birth: ' + data.birth_year);
+
+            const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
             $('.luke').append($birthYear);
-            const $gender = $('<li>').text(data.gender);
+
+            const $gender = $('<li>').text('Gender: ' + data.gender);
             $('.luke').append($gender);
+
+            const $height = $('<li>').text('Height: ' + data.height);
+            $('.luke').append($height);
+
+            const $mass = $('<li>').text('Mass: ' + data.mass);
+            $('.luke').append($mass);
+
+            const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+            $('.luke').append($eyeColor);
+
+            const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+            $('.luke').append($hairColor);
+
+            const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+            $('.luke').append($skinColor);
 
                 $.ajax(
                     {
@@ -29,22 +46,27 @@ $(() => {
                   ).then (
 
                       (data) => {
-                        console.log(data);
-                        const $homeworld = $('<li>').text(data.name);
+                        // console.log(data);
+                        const $homeworld = $('<li>').text('Homeworld: ' + data.name);
                         $('.luke').append($homeworld);
                       }
                     )
 
-            const $height = $('<li>').text(data.height);
-            $('.luke').append($height);
-            const $mass = $('<li>').text(data.mass);
-            $('.luke').append($mass);
-            const $eyeColor = $('<li>').text(data.eye_color);
-            $('.luke').append($eyeColor);
-            const $hairColor = $('<li>').text(data.hair_color);
-            $('.luke').append($hairColor);
-            const $skinColor = $('<li>').text(data.skin_color);
-            $('.luke').append($skinColor);
+                  $.ajax(
+                      {
+                        url:  data.species
+                      }
+                    ).then (
+
+                        (data) => {
+                          // console.log(data);
+                          const $species = $('<li>').text('Species: ' + data.name);
+                          $('.luke').append($species);
+                        }
+                      )
+
+
+
             // turn off button
             $(event.target).off();
         },
@@ -64,8 +86,63 @@ $(() => {
             }
         ).then (
             (data) => {
-              // console.log(data);
+              console.log(data);
+              const $r2d2 = $('<h2>').text(data.name);
+              $('.r2d2').append($r2d2);
 
+              const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+              $('.r2d2').append($birthYear);
+
+              const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+              $('.r2d2').append($eyeColor);
+
+              const $height = $('<li>').text('Height: ' + data.height);
+              $('.r2d2').append($height);
+
+              const $mass = $('<li>').text('Mass: ' + data.mass);
+              $('.r2d2').append($mass);
+
+              const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+              $('.r2d2').append($skinColor);
+
+                $.ajax(
+                    {
+                      url:  data.homeworld
+                    }
+                  ).then (
+
+                      (data) => {
+                        // console.log(data);
+                        const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                        $('.r2d2').append($homeworld);
+                      }
+                    )
+
+                  $.ajax(
+                      {
+                        url:  data.species
+                      }
+                    ).then (
+
+                        (data) => {
+                          // console.log(data);
+                          const $species = $('<li>').text('Species: ' + data.name);
+                          $('.r2d2').append($species);
+                        }
+                      )
+
+                  // $.ajax(
+                  //     {
+                  //       url:  data.starships
+                  //     }
+                  //   ).then (
+                  //
+                  //       (data) => {
+                  //         console.log(data);
+                  //         const $starships = $('<li>').text('Starships: ' + data.name);
+                  //         $('.r2d2').append($starships);
+                  //       }
+                  //     )
             },
             () => {
                 console.log('bad request');
