@@ -143,6 +143,8 @@ $(() => {
                   //         $('.r2d2').append($starships);
                   //       }
                   //     )
+                  // turn off button
+                  $(event.target).off();
             },
             () => {
                 console.log('bad request');
@@ -207,6 +209,8 @@ $(() => {
                         }
                       )
 
+            // turn off button
+            $(event.target).off();
 
             },
             () => {
@@ -278,6 +282,8 @@ $(() => {
                         }
                       )
 
+            // turn off button
+            $(event.target).off();
 
             },
             () => {
@@ -286,6 +292,77 @@ $(() => {
       )
 
     })
+    // ======== PRINCESS LEIA ==============
+
+    // create click event for Princess Leia button
+
+        $('input[id="leia"]').on('click', (event) => {
+            $.ajax(
+                {
+                  url: "https://swapi.co/api/people/5"
+                }
+            ).then (
+                (data) => {
+                  console.log(data);
+                  const $leia = $('<h2>').text(data.name);
+                  $('.leia').append($leia);
+
+                  const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+                  $('.leia').append($birthYear);
+
+                  const $gender = $('<li>').text('Gender: ' + data.gender);
+                  $('.leia').append($gender);
+
+                  const $height = $('<li>').text('Height: ' + data.height);
+                  $('.leia').append($height);
+
+                  const $mass = $('<li>').text('Mass: ' + data.mass);
+                  $('.leia').append($mass);
+
+                  const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+                  $('.leia').append($eyeColor);
+
+                  const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+                  $('.leia').append($hairColor);
+
+                  const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+                  $('.leia').append($skinColor);
+
+                    $.ajax(
+                        {
+                          url:  data.homeworld
+                        }
+                      ).then (
+
+                          (data) => {
+                            // console.log(data);
+                            const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                            $('.leia').append($homeworld);
+                          }
+                        )
+
+                  $.ajax(
+                              {
+                        url:  data.species
+                        }
+                      ).then (
+
+                            (data) => {
+                              // console.log(data);
+                              const $species = $('<li>').text('Species: ' + data.name);
+                              $('.leia').append($species);
+                            }
+                          )
+
+                // turn off button
+                $(event.target).off();
+                },
+                () => {
+                    console.log('bad request');
+                }
+          )
+
+        })
 
 // === closes jquery
 });
