@@ -565,6 +565,71 @@ $('input[id="obi"]').on('click', (event) => {
   })
 });
 
+// ======== YODA ==============
+// create click event for Yoda button
+
+$('input[id="yoda"]').on('click', (event) => {
+    $.ajax(
+      {
+        url: "https://swapi.co/api/people/20"
+      }
+    ).then (
+      (data) => {
+        console.log(data);
+        const $yoda = $('<h2>').text(data.name);
+        $('.yoda').append($yoda);
+
+        const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+        $('.yoda').append($birthYear);
+
+        const $gender = $('<li>').text('Gender: ' + data.gender);
+        $('.yoda').append($gender);
+
+        const $height = $('<li>').text('Height: ' + data.height);
+        $('.yoda').append($height);
+
+        const $mass = $('<li>').text('Mass: ' + data.mass);
+        $('.yoda').append($mass);
+
+        const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+        $('.yoda').append($eyeColor);
+
+        const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+        $('.yoda').append($hairColor);
+
+        const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+        $('.yoda').append($skinColor);
+
+            // yoda's planet is unknown so I didnt want to include it
+                // $.ajax(
+                //   {
+                //     url: "https://swapi.co/api/planets/28/"
+                //   }
+                // ).then(
+                //   (data) => {
+                //     console.log(data);
+                //   }
+                // )
+
+                $.ajax(
+                      {
+                        url:  "https://swapi.co/api/species/6/"
+                      }
+                    ).then (
+
+                        (data) => {
+                          // console.log(data);
+                          const $species = $('<li>').text('Species: ' + data.name);
+                          $('.yoda').append($species);
+                        }
+                      )
+
+      // data function end bracket
+      }
+    // then end brackets
+    )
+// input end brackets
+})
 
 
 
