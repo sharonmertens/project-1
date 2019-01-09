@@ -151,6 +151,71 @@ $(() => {
 
       })
 
+// ======== C3PO ==============
+
+// create click event for C3PO button
+
+      $('input[id="c3po"]').on('click', (event) => {
+        $.ajax(
+            {
+              url: "https://swapi.co/api/people/2"
+            }
+        ).then (
+            (data) => {
+              console.log(data);
+              const $c3po = $('<h2>').text(data.name);
+              $('.c3po').append($c3po);
+
+              const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+              $('.c3po').append($birthYear);
+
+              const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+              $('.c3po').append($eyeColor);
+
+              const $height = $('<li>').text('Height: ' + data.height);
+              $('.c3po').append($height);
+
+              const $mass = $('<li>').text('Mass: ' + data.mass);
+              $('.c3po').append($mass);
+
+              const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+              $('.c3po').append($skinColor);
+
+                $.ajax(
+                    {
+                      url:  data.homeworld
+                    }
+                  ).then (
+
+                      (data) => {
+                        // console.log(data);
+                        const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                        $('.c3po').append($homeworld);
+                      }
+                    )
+
+                  $.ajax(
+                      {
+                        url:  data.species
+                      }
+                    ).then (
+
+                        (data) => {
+                          // console.log(data);
+                          const $species = $('<li>').text('Species: ' + data.name);
+                          $('.c3po').append($species);
+                        }
+                      )
+
+
+            },
+            () => {
+                console.log('bad request');
+            }
+      )
+
+      })
+
 
 // === closes jquery
 });
