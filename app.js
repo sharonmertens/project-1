@@ -428,7 +428,73 @@ $(() => {
       })
     });
 
+    // ======== CHEWBACCA ==============
+    // create click event for Chewbacca button
 
+        $('input[id="chewie"]').on('click', (event) => {
+          $.ajax(
+            {
+              url: "https://swapi.co/api/people/13"
+            }
+          ).then (
+            (data) => {
+              console.log(data);
+              const $chewie = $('<h2>').text(data.name);
+              $('.chewie').append($chewie);
+
+              const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+              $('.chewie').append($birthYear);
+
+              const $gender = $('<li>').text('Gender: ' + data.gender);
+              $('.chewie').append($gender);
+
+              const $height = $('<li>').text('Height: ' + data.height);
+              $('.chewie').append($height);
+
+              const $mass = $('<li>').text('Mass: ' + data.mass);
+              $('.chewie').append($mass);
+
+              const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+              $('.chewie').append($eyeColor);
+
+              const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+              $('.chewie').append($hairColor);
+
+              // const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+              // $('.chewie')).append($skinColor);
+
+                  $.ajax(
+                    {
+                      url: data.homeworld
+                    }
+                  ).then(
+                    (data) => {
+                      // console.log(data);
+                      const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                      $('.chewie').append($homeworld);
+                    }
+                  )
+
+                  $.ajax(
+                        {
+                          url:  data.species
+                        }
+                      ).then (
+
+                          (data) => {
+                            // console.log(data);
+                            const $species = $('<li>').text('Species: ' + data.name);
+                            $('.chewie').append($species);
+                          }
+                        )
+
+              // turn off button
+              $(event.target).off();
+              },
+              () => {
+                  console.log('bad request');
+          })
+        });
 
 
 // === closes jquery
