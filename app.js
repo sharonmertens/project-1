@@ -404,68 +404,77 @@ $(() => {
 // create click event for Han Solo button
 
     $('input[id="han"]').on('click', (event) => {
-      $.ajax(
-        {
-          url: "https://swapi.co/api/people/14"
-        }
-      ).then (
-        (data) => {
-          console.log(data);
-          const $han = $('<h2>').text(data.name);
-          $('.han').append($han);
+      if ($(event.currentTarget).parent().children().length === 3 ) {
+        $.ajax(
+          {
+            url: "https://swapi.co/api/people/14"
+          }
+        ).then (
+          (data) => {
+            console.log(data);
 
-          const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-          $('.han').append($birthYear);
+            const $div6 = $('<div>');
+            $('.han').append($div6);
 
-          const $gender = $('<li>').text('Gender: ' + data.gender);
-          $('.han').append($gender);
+            const $han = $('<h2>').text(data.name);
+            $div6.append($han);
 
-          const $height = $('<li>').text('Height: ' + data.height);
-          $('.han').append($height);
+            const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+            $div6.append($birthYear);
 
-          const $mass = $('<li>').text('Mass: ' + data.mass);
-          $('.han').append($mass);
+            const $gender = $('<li>').text('Gender: ' + data.gender);
+            $div6.append($gender);
 
-          const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-          $('.han').append($eyeColor);
+            const $height = $('<li>').text('Height: ' + data.height);
+            $div6.append($height);
 
-          const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-          $('.han').append($hairColor);
+            const $mass = $('<li>').text('Mass: ' + data.mass);
+            $div6.append($mass);
 
-          const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-          $('.han').append($skinColor);
+            const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+            $div6.append($eyeColor);
 
-              $.ajax(
-                {
-                  url: data.homeworld
-                }
-              ).then(
-                (data) => {
-                  // console.log(data);
-                  const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                  $('.han').append($homeworld);
-                }
-              )
+            const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+            $div6.append($hairColor);
 
-              $.ajax(
-                    {
-                      url:  data.species
-                    }
-                  ).then (
+            const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+            $div6.append($skinColor);
 
-                      (data) => {
-                        // console.log(data);
-                        const $species = $('<li>').text('Species: ' + data.name);
-                        $('.han').append($species);
+                $.ajax(
+                  {
+                    url: data.homeworld
+                  }
+                ).then(
+                  (data) => {
+                    // console.log(data);
+                    const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                    $div6.append($homeworld);
+                  }
+                )
+
+                $.ajax(
+                      {
+                        url:  data.species
                       }
-                    )
+                    ).then (
 
-          // turn off button
-          $(event.target).off();
-          },
-          () => {
-              console.log('bad request');
-      })
+                        (data) => {
+                          // console.log(data);
+                          const $species = $('<li>').text('Species: ' + data.name);
+                          $div6.append($species);
+                        }
+                      )
+
+            // turn off button
+            // $(event.target).off();
+            },
+            () => {
+                console.log('bad request');
+        })
+      } else {
+        $(event.currentTarget).parent().children().eq(3).remove();
+      }
+
     });
 
 // ======== CHEWBACCA ==============
