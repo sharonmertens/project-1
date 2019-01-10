@@ -636,6 +636,7 @@ $('input[id="obi"]').on('click', (event) => {
 // create click event for Yoda button
 
 $('input[id="yoda"]').on('click', (event) => {
+  if ($(event.currentTarget).parent().children().length === 3 ) {
     $.ajax(
       {
         url: "https://swapi.co/api/people/20"
@@ -643,29 +644,33 @@ $('input[id="yoda"]').on('click', (event) => {
     ).then (
       (data) => {
         console.log(data);
+
+        const $div9 = $('<div>');
+        $('.yoda').append($div9);
+
         const $yoda = $('<h2>').text(data.name);
-        $('.yoda').append($yoda);
+        $div9.append($yoda);
 
         const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-        $('.yoda').append($birthYear);
+        $div9.append($birthYear);
 
         const $gender = $('<li>').text('Gender: ' + data.gender);
-        $('.yoda').append($gender);
+        $div9.append($gender);
 
         const $height = $('<li>').text('Height: ' + data.height);
-        $('.yoda').append($height);
+        $div9.append($height);
 
         const $mass = $('<li>').text('Mass: ' + data.mass);
-        $('.yoda').append($mass);
+        $div9.append($mass);
 
         const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-        $('.yoda').append($eyeColor);
+        $div9.append($eyeColor);
 
         const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-        $('.yoda').append($hairColor);
+        $div9.append($hairColor);
 
         const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-        $('.yoda').append($skinColor);
+        $div9.append($skinColor);
 
             // yoda's planet is unknown so I didnt want to include it
                 // $.ajax(
@@ -687,7 +692,7 @@ $('input[id="yoda"]').on('click', (event) => {
                         (data) => {
                           // console.log(data);
                           const $species = $('<li>').text('Species: ' + data.name);
-                          $('.yoda').append($species);
+                          $div9.append($species);
                         }
                       )
 
@@ -695,6 +700,9 @@ $('input[id="yoda"]').on('click', (event) => {
       }
     // then end brackets
     )
+  } else {
+    $(event.currentTarget).parent().children().eq(3).remove();
+  }
 // input end brackets
 })
 
