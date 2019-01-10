@@ -559,68 +559,77 @@ $(() => {
 
 
 $('input[id="obi"]').on('click', (event) => {
-  $.ajax(
-    {
-      url: "https://swapi.co/api/people/10"
-    }
-  ).then (
-    (data) => {
-      console.log(data);
-      const $obi = $('<h2>').text(data.name);
-      $('.obi').append($obi);
+  if ($(event.currentTarget).parent().children().length === 3 ) {
+    $.ajax(
+      {
+        url: "https://swapi.co/api/people/10"
+      }
+    ).then (
+      (data) => {
+        console.log(data);
 
-      const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-      $('.obi').append($birthYear);
+        const $div8 = $('<div>');
+        $('.obi').append($div8);
 
-      const $gender = $('<li>').text('Gender: ' + data.gender);
-      $('.obi').append($gender);
+        const $obi = $('<h2>').text(data.name);
+        $div8.append($obi);
 
-      const $height = $('<li>').text('Height: ' + data.height);
-      $('.obi').append($height);
+        const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+        $div8.append($birthYear);
 
-      const $mass = $('<li>').text('Mass: ' + data.mass);
-      $('.obi').append($mass);
+        const $gender = $('<li>').text('Gender: ' + data.gender);
+        $div8.append($gender);
 
-      const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-      $('.obi').append($eyeColor);
+        const $height = $('<li>').text('Height: ' + data.height);
+        $div8.append($height);
 
-      const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-      $('.obi').append($hairColor);
+        const $mass = $('<li>').text('Mass: ' + data.mass);
+        $div8.append($mass);
 
-      // const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-      // $('.chewie')).append($skinColor);
+        const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+        $div8.append($eyeColor);
 
-          $.ajax(
-            {
-              url: data.homeworld
-            }
-          ).then(
-            (data) => {
-              // console.log(data);
-              const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-              $('.obi').append($homeworld);
-            }
-          )
+        const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+        $div8.append($hairColor);
 
-          $.ajax(
-                {
-                  url:  data.species
-                }
-              ).then (
+        // const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+        // $('.chewie')).append($skinColor);
 
-                  (data) => {
-                    // console.log(data);
-                    const $species = $('<li>').text('Species: ' + data.name);
-                    $('.obi').append($species);
+            $.ajax(
+              {
+                url: data.homeworld
+              }
+            ).then(
+              (data) => {
+                // console.log(data);
+                const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                $div8.append($homeworld);
+              }
+            )
+
+            $.ajax(
+                  {
+                    url:  data.species
                   }
-                )
+                ).then (
 
-      // turn off button
-      $(event.target).off();
-      },
-      () => {
-          console.log('bad request');
-  })
+                    (data) => {
+                      // console.log(data);
+                      const $species = $('<li>').text('Species: ' + data.name);
+                      $div8.append($species);
+                    }
+                  )
+
+        // turn off button
+        // $(event.target).off();
+        },
+        () => {
+            console.log('bad request');
+    })
+  } else {
+    $(event.currentTarget).parent().children().eq(3).remove();
+  }
+
 });
 
 // ======== YODA ==============
