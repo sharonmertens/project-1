@@ -245,6 +245,7 @@ $(() => {
 // create click event for Darth Vader button
 
     $('input[id="darth"]').on('click', (event) => {
+      if ($(event.currentTarget).parent().children().length === 3 ) {
         $.ajax(
             {
               url: "https://swapi.co/api/people/4"
@@ -252,29 +253,33 @@ $(() => {
         ).then (
             (data) => {
               console.log(data);
+
+              const $div4 = $('<div>');
+              $('.darth').append($div4);
+
               const $darth = $('<h2>').text(data.name);
-              $('.darth').append($darth);
+              $div4.append($darth);
 
               const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-              $('.darth').append($birthYear);
+              $div4.append($birthYear);
 
               const $gender = $('<li>').text('Gender: ' + data.gender);
-              $('.darth').append($gender);
+              $div4.append($gender);
 
               const $height = $('<li>').text('Height: ' + data.height);
-              $('.darth').append($height);
+              $div4.append($height);
 
               const $mass = $('<li>').text('Mass: ' + data.mass);
-              $('.darth').append($mass);
+              $div4.append($mass);
 
               const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-              $('.darth').append($eyeColor);
+              $div4.append($eyeColor);
 
               const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-              $('.darth').append($hairColor);
+              $div4.append($hairColor);
 
               const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-              $('.darth').append($skinColor);
+              $div4.append($skinColor);
 
                 $.ajax(
                     {
@@ -285,7 +290,7 @@ $(() => {
                       (data) => {
                         // console.log(data);
                         const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                        $('.darth').append($homeworld);
+                        $div4.append($homeworld);
                       }
                     )
 
@@ -298,18 +303,22 @@ $(() => {
                         (data) => {
                           // console.log(data);
                           const $species = $('<li>').text('Species: ' + data.name);
-                          $('.darth').append($species);
+                          $div4.append($species);
                         }
                       )
 
             // turn off button
-            $(event.target).off();
+            // $(event.target).off();
 
             },
             () => {
                 console.log('bad request');
             }
-      )
+          )
+      } else {
+        $(event.currentTarget).parent().children().eq(3).remove();
+      }
+
 
     })
 // ======== PRINCESS LEIA ==============
