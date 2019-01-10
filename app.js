@@ -325,6 +325,7 @@ $(() => {
 // create click event for Princess Leia button
 
     $('input[id="leia"]').on('click', (event) => {
+      if ($(event.currentTarget).parent().children().length === 3 ) {
         $.ajax(
             {
               url: "https://swapi.co/api/people/5"
@@ -332,29 +333,32 @@ $(() => {
         ).then (
             (data) => {
               console.log(data);
+              const $div5 = $('<div>');
+              $('.leia').append($div5);
+
               const $leia = $('<h2>').text(data.name);
-              $('.leia').append($leia);
+              $div5.append($leia);
 
               const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-              $('.leia').append($birthYear);
+              $div5.append($birthYear);
 
               const $gender = $('<li>').text('Gender: ' + data.gender);
-              $('.leia').append($gender);
+              $div5.append($gender);
 
               const $height = $('<li>').text('Height: ' + data.height);
-              $('.leia').append($height);
+              $div5.append($height);
 
               const $mass = $('<li>').text('Mass: ' + data.mass);
-              $('.leia').append($mass);
+              $div5.append($mass);
 
               const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-              $('.leia').append($eyeColor);
+              $div5.append($eyeColor);
 
               const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-              $('.leia').append($hairColor);
+              $div5.append($hairColor);
 
               const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-              $('.leia').append($skinColor);
+              $div5.append($skinColor);
 
                 $.ajax(
                     {
@@ -365,7 +369,7 @@ $(() => {
                       (data) => {
                         // console.log(data);
                         const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                        $('.leia').append($homeworld);
+                        $div5.append($homeworld);
                       }
                     )
 
@@ -378,17 +382,21 @@ $(() => {
                         (data) => {
                           // console.log(data);
                           const $species = $('<li>').text('Species: ' + data.name);
-                          $('.leia').append($species);
+                          $div5.append($species);
                         }
                       )
 
-            // turn off button
-            $(event.target).off();
+            // // turn off button
+            // $(event.target).off();
             },
             () => {
                 console.log('bad request');
             }
           )
+
+      } else {
+        $(event.currentTarget).parent().children().eq(3).remove();
+      }
 
         })
 
