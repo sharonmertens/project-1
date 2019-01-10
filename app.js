@@ -631,7 +631,39 @@ $('input[id="yoda"]').on('click', (event) => {
 // input end brackets
 })
 
+// ========== CAROUSEL ===============
 
+// image index counter
+let currentImgIndex = 0;
+
+// number of images in carousel
+const numOfImages = $('.carousel-images').children().length - 1
+// when we clickk on the next button -->
+$('.next').on('click', () => {
+  // we want the current image to hide
+  $('.carousel-images').children().eq(currentImgIndex).hide()
+  // if currentImgIndex is less than numOfImages
+  if (currentImgIndex < numOfImages) {
+    currentImgIndex ++ // we can keep incrementing
+  } else {
+    currentImgIndex = 0
+  }
+  // and next image to show
+  $('.carousel-images').children().eq(currentImgIndex).show()
+})
+
+$('.previous').on('click', () => {
+  // hide the current images
+  $('.carousel-images').children().eq(currentImgIndex).hide()
+  if (currentImgIndex > 0) {
+    currentImgIndex --
+  } else {
+    currentImgIndex = numOfImages
+  }
+
+  // show current image
+  $('.carousel-images').children().eq(currentImgIndex).show()
+})
 
 
 // === closes jquery
