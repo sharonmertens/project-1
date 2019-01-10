@@ -171,65 +171,73 @@ $(() => {
 // create click event for C3PO button
 
       $('input[id="c3po"]').on('click', (event) => {
-        $.ajax(
-            {
-              url: "https://swapi.co/api/people/2"
-            }
-        ).then (
-            (data) => {
-              console.log(data);
-              const $c3po = $('<h2>').text(data.name);
-              $('.c3po').append($c3po);
+        if ($(event.currentTarget).parent().children().length === 3) {
+          $.ajax(
+              {
+                url: "https://swapi.co/api/people/2"
+              }
+          ).then (
+              (data) => {
+                console.log(data);
+                // creating new div to append all the conent into
+                const $div3 = $('<div>')
+                $('.c3po').append($div3);
 
-              const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-              $('.c3po').append($birthYear);
+                const $c3po = $('<h2>').text(data.name);
+                $div3.append($c3po);
 
-              const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-              $('.c3po').append($eyeColor);
+                const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+                $div3.append($birthYear);
 
-              const $height = $('<li>').text('Height: ' + data.height);
-              $('.c3po').append($height);
+                const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+                $div3.append($eyeColor);
 
-              const $mass = $('<li>').text('Mass: ' + data.mass);
-              $('.c3po').append($mass);
+                const $height = $('<li>').text('Height: ' + data.height);
+                $div3.append($height);
 
-              const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-              $('.c3po').append($skinColor);
+                const $mass = $('<li>').text('Mass: ' + data.mass);
+                $div3.append($mass);
 
-                $.ajax(
-                    {
-                      url:  data.homeworld
-                    }
-                  ).then (
-
-                      (data) => {
-                        // console.log(data);
-                        const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                        $('.c3po').append($homeworld);
-                      }
-                    )
+                const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+                $div3.append($skinColor);
 
                   $.ajax(
                       {
-                        url:  data.species
+                        url:  data.homeworld
                       }
                     ).then (
 
                         (data) => {
                           // console.log(data);
-                          const $species = $('<li>').text('Species: ' + data.name);
-                          $('.c3po').append($species);
+                          const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                          $div3.append($homeworld);
                         }
                       )
 
-            // turn off button
-            $(event.target).off();
+                    $.ajax(
+                        {
+                          url:  data.species
+                        }
+                      ).then (
 
-            },
-            () => {
-                console.log('bad request');
-            }
-      )
+                          (data) => {
+                            // console.log(data);
+                            const $species = $('<li>').text('Species: ' + data.name);
+                            $div3.append($species);
+                          }
+                        )
+
+              // turn off button
+              // $(event.target).off();
+
+              },
+              () => {
+                  console.log('bad request');
+              }
+        )
+      } else {
+        $(event.currentTarget).parent().children().eq(3).remove();
+      }
 
       })
 
