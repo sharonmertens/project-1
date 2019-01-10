@@ -481,68 +481,77 @@ $(() => {
 // create click event for Chewbacca button
 
     $('input[id="chewie"]').on('click', (event) => {
-      $.ajax(
-        {
-          url: "https://swapi.co/api/people/13"
-        }
-      ).then (
-        (data) => {
-          console.log(data);
-          const $chewie = $('<h2>').text(data.name);
-          $('.chewie').append($chewie);
+      if ($(event.currentTarget).parent().children().length === 3 ) {
+        $.ajax(
+          {
+            url: "https://swapi.co/api/people/13"
+          }
+        ).then (
+          (data) => {
+            console.log(data);
 
-          const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-          $('.chewie').append($birthYear);
+            const $div7 = $('<div>');
+            $('.chewie').append($div7);
 
-          const $gender = $('<li>').text('Gender: ' + data.gender);
-          $('.chewie').append($gender);
+            const $chewie = $('<h2>').text(data.name);
+            $div7.append($chewie);
 
-          const $height = $('<li>').text('Height: ' + data.height);
-          $('.chewie').append($height);
+            const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+            $div7.append($birthYear);
 
-          const $mass = $('<li>').text('Mass: ' + data.mass);
-          $('.chewie').append($mass);
+            const $gender = $('<li>').text('Gender: ' + data.gender);
+            $div7.append($gender);
 
-          const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-          $('.chewie').append($eyeColor);
+            const $height = $('<li>').text('Height: ' + data.height);
+            $div7.append($height);
 
-          const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-          $('.chewie').append($hairColor);
+            const $mass = $('<li>').text('Mass: ' + data.mass);
+            $div7.append($mass);
 
-          // const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-          // $('.chewie')).append($skinColor);
+            const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+            $div7.append($eyeColor);
 
-              $.ajax(
-                {
-                  url: data.homeworld
-                }
-              ).then(
-                (data) => {
-                  // console.log(data);
-                  const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                  $('.chewie').append($homeworld);
-                }
-              )
+            const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+            $div7.append($hairColor);
 
-              $.ajax(
-                    {
-                      url:  data.species
-                    }
-                  ).then (
+            // const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+            // $('.chewie')).append($skinColor);
 
-                      (data) => {
-                        // console.log(data);
-                        const $species = $('<li>').text('Species: ' + data.name);
-                        $('.chewie').append($species);
+                $.ajax(
+                  {
+                    url: data.homeworld
+                  }
+                ).then(
+                  (data) => {
+                    // console.log(data);
+                    const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                    $div7.append($homeworld);
+                  }
+                )
+
+                $.ajax(
+                      {
+                        url:  data.species
                       }
-                    )
+                    ).then (
 
-          // turn off button
-          $(event.target).off();
-          },
-          () => {
-              console.log('bad request');
-      })
+                        (data) => {
+                          // console.log(data);
+                          const $species = $('<li>').text('Species: ' + data.name);
+                          $div7.append($species);
+                        }
+                      )
+
+            // turn off button
+            // $(event.target).off();
+            },
+            () => {
+                console.log('bad request');
+        })
+      } else {
+        $(event.currentTarget).parent().children().eq(3).remove();
+      }
+
     });
 
 // ======== OBI-WAN KENOBI ==============
