@@ -3,119 +3,46 @@ $(() => {
 // ======== LUKE SKYWALKER ==============
 // create click event for luke skywalker button
 
-    $('input[id="luke"]').on('click', (event) => {
-          // console.log('i clicked it');
-
-      $.ajax(
-          {
-            url: "https://swapi.co/api/people/1"
-          }
-      ).then(
-        (data) => {
-          // // check to see that API is set up
-            console.log(data);
-            // create luke skywalker
-            const $luke = $('<h2>').text(data.name);
-            $('.luke').append($luke);
-
-            const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-            $('.luke').append($birthYear);
-
-            const $gender = $('<li>').text('Gender: ' + data.gender);
-            $('.luke').append($gender);
-
-            const $height = $('<li>').text('Height: ' + data.height);
-            $('.luke').append($height);
-
-            const $mass = $('<li>').text('Mass: ' + data.mass);
-            $('.luke').append($mass);
-
-            const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-            $('.luke').append($eyeColor);
-
-            const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-            $('.luke').append($hairColor);
-
-            const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-            $('.luke').append($skinColor);
-
-                $.ajax(
-                    {
-                      url:  data.species
-                    }
-                  ).then (
-
-                      (data) => {
-                        // console.log(data);
-                        const $species = $('<li>').text('Species: ' + data.name);
-                        $('.luke').append($species);
-                      }
-                    )
-
-                  $.ajax(
-                      {
-                        url:  data.homeworld
-                      }
-                    ).then (
-
-                        (data) => {
-                          // console.log(data);
-                          const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                          $('.luke').append($homeworld);
-                        }
-                      )
-
-
-
-            // turn off button
-            $(event.target).off();
-        },
-        () => {
-            console.log('bad request');
-        }
-      )
-
-// ======== R2D2 ==============
-// create click event for R2D2 button
-    })
-      $('input[id="r2d2"]').on('click', (event) => {
+  $('input[id="luke"]').on('click', (event) => {
+      console.log('checking');
+      console.log($(event.currentTarget).parent().children().length);
+      if ($(event.currentTarget).parent().children().length === 3) {
         $.ajax(
             {
-              url: "https://swapi.co/api/people/3"
+              url: "https://swapi.co/api/people/1"
             }
-        ).then (
-            (data) => {
+        ).then(
+          (data) => {
+            // // check to see that API is set up
+              console.log('i clicked it');
               console.log(data);
-              const $r2d2 = $('<h2>').text(data.name);
-              $('.r2d2').append($r2d2);
+              // create luke skywalker
+              const $div = $('<div>')
+              $('.luke').append($div);
+
+              const $luke = $('<h2>').text(data.name);
+              $div.append($luke);
 
               const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-              $('.r2d2').append($birthYear);
+              $div.append($birthYear);
 
-              const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-              $('.r2d2').append($eyeColor);
+              const $gender = $('<li>').text('Gender: ' + data.gender);
+              $div.append($gender);
 
               const $height = $('<li>').text('Height: ' + data.height);
-              $('.r2d2').append($height);
+              $div.append($height);
 
               const $mass = $('<li>').text('Mass: ' + data.mass);
-              $('.r2d2').append($mass);
+              $div.append($mass);
+
+              const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+              $div.append($eyeColor);
+
+              const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
+              $div.append($hairColor);
 
               const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-              $('.r2d2').append($skinColor);
-
-                $.ajax(
-                    {
-                      url:  data.homeworld
-                    }
-                  ).then (
-
-                      (data) => {
-                        // console.log(data);
-                        const $homeworld = $('<li>').text('Homeworld: ' + data.name);
-                        $('.r2d2').append($homeworld);
-                      }
-                    )
+              $div.append($skinColor);
 
                   $.ajax(
                       {
@@ -126,29 +53,117 @@ $(() => {
                         (data) => {
                           // console.log(data);
                           const $species = $('<li>').text('Species: ' + data.name);
-                          $('.r2d2').append($species);
+                          $div.append($species);
                         }
                       )
 
-                  // $.ajax(
-                  //     {
-                  //       url:  data.starships
-                  //     }
-                  //   ).then (
-                  //
-                  //       (data) => {
-                  //         console.log(data);
-                  //         const $starships = $('<li>').text('Starships: ' + data.name);
-                  //         $('.r2d2').append($starships);
-                  //       }
-                  //     )
-                  // turn off button
-                  $(event.target).off();
-            },
-            () => {
-                console.log('bad request');
-            }
-      )
+                    $.ajax(
+                        {
+                          url:  data.homeworld
+                        }
+                      ).then (
+
+                          (data) => {
+                            // console.log(data);
+                            const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                            $div.append($homeworld);
+                          }
+                        )
+
+
+              // turn off button
+              // $(event.target).off();
+          },
+          () => {
+              console.log('bad request');
+          }
+        )
+      } else {
+        $(event.currentTarget).parent().children().eq(3).remove();
+      }
+
+})
+// ======== R2D2 ==============
+// create click event for R2D2 button
+
+  $('input[id="r2d2"]').on('click', (event) => {
+    if ($(event.currentTarget).parent().children().length === 3) {
+      $.ajax(
+          {
+            url: "https://swapi.co/api/people/3"
+          }
+      ).then (
+          (data) => {
+            console.log(data);
+            const $div2 = $('<div>');
+            $('.r2d2').append($div2);
+
+            const $r2d2 = $('<h2>').text(data.name);
+            $div2.append($r2d2);
+
+            const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
+            $div2.append($birthYear);
+
+            const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
+            $div2.append($eyeColor);
+
+            const $height = $('<li>').text('Height: ' + data.height);
+            $div2.append($height);
+
+            const $mass = $('<li>').text('Mass: ' + data.mass);
+            $div2.append($mass);
+
+            const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
+            $div2.append($skinColor);
+
+              $.ajax(
+                  {
+                    url:  data.homeworld
+                  }
+                ).then (
+
+                    (data) => {
+                      // console.log(data);
+                      const $homeworld = $('<li>').text('Homeworld: ' + data.name);
+                      $div2.append($homeworld);
+                    }
+                  )
+
+                $.ajax(
+                    {
+                      url:  data.species
+                    }
+                  ).then (
+
+                      (data) => {
+                        // console.log(data);
+                        const $species = $('<li>').text('Species: ' + data.name);
+                        $div2.append($species);
+                      }
+                    )
+
+                // $.ajax(
+                //     {
+                //       url:  data.starships
+                //     }
+                //   ).then (
+                //
+                //       (data) => {
+                //         console.log(data);
+                //         const $starships = $('<li>').text('Starships: ' + data.name);
+                //         $('.r2d2').append($starships);
+                //       }
+                //     )
+                // turn off button
+                // $(event.target).off();
+          },
+          () => {
+              console.log('bad request');
+          }
+          )
+        } else {
+          $(event.currentTarget).parent().children().eq(3).remove();
+        }
 
       })
 
