@@ -1,5 +1,8 @@
+/* ======== Mobile Design ========= */
+/* -------------------------------- */
+
 body {
-  /* background-image: url("images/background.jpeg"); */
+  background-image: url("images/background.jpeg");
   font-family: 'Star Jedi', arial;
 }
 
@@ -27,6 +30,8 @@ li {
   padding: 20px;
   margin: auto;
   border: 50px;
+  height: 480px;
+  width: 320px;
 }
 .characters img {
   height: 200px;
@@ -78,9 +83,23 @@ button:hover {
   display: block;
 }
 
-/* Mobile First Design */
+/* ======= Desktop Design ======== */
+/* -------------------------------- */
 @media (min-width: 600px) {
   body {
-    background-color: blue;
+    background-image: url("images/background2.jpg")
   }
+
+  /* characters  */
+  .characters {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .characters img {
+    height: 200px;
+    width: 200px;
+    padding: 50px;
+    border: 3px solid white;
+
 }
