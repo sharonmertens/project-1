@@ -10,6 +10,14 @@ h1 {
   text-shadow: 4px 4px 4px #aaa;
 }
 
+h2 {
+  color: white;
+}
+
+li {
+  color: white;
+}
+
 /* CHARACTER SECTION */
 
 .characters {
@@ -73,6 +81,6 @@ button:hover {
 /* Mobile First Design */
 @media (min-width: 600px) {
   body {
-    background-color: black;
+    background-color: blue;
   }
 }
