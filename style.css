@@ -1,29 +1,51 @@
 body {
-  background-image: url("images/background.jpeg")
+  /* background-image: url("images/background.jpeg"); */
+  font-family: 'Star Jedi', arial;
 }
 
 h1 {
   color: white;
+  font-family: 'Star Jedi', arial;
+  font-size: 48px;
+  text-shadow: 4px 4px 4px #aaa;
 }
 
 /* CHARACTER SECTION */
 
+.characters {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 20px;
+  margin: auto;
+  border: 50px;
+}
 .characters img {
-  height: 100px;
-  width: 100px;
+  height: 200px;
+  width: 200px;
+  padding: 50px;
+  border: 3px solid white;
+}
+
+input[type=button] {
+  background-color: thistle;
+  font-size: 20px;
+  border: 1px solid white;
 }
 
 /* CAROUSEL SECTION */
 
-/* .container {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-} */
+  border: 5px solid white;
+}
 
 .carousel-container {
   display: flex;
   flex-direction: row;
+  border: 5px solid white;
 }
 button {
   background-color: #f44336;
@@ -46,4 +68,11 @@ button:hover {
 
 .carousel-images img:first-of-type {
   display: block;
+}
+
+/* Mobile First Design */
+@media (min-width: 600px) {
+  body {
+    background-color: black;
+  }
 }

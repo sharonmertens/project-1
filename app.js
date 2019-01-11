@@ -1,5 +1,7 @@
 $(() => {
 
+// ========== CHARACTERS ===============
+
 // ======== LUKE SKYWALKER ==============
 // create click event for luke skywalker button
 
