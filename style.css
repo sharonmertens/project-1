@@ -53,6 +53,7 @@ input[type=button] {
   flex-direction: column;
   align-items: center;
   border: 5px solid white;
+  padding: 100px;
 }
 
 .carousel-container {
