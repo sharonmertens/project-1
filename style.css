@@ -15,10 +15,12 @@ h1 {
 
 h2 {
   color: white;
+  font-family: 'Star Jedi', arial;
 }
 
 li {
   color: white;
+  font-family: 'Star Jedi', arial;
 }
 
 /* CHARACTER SECTION */
@@ -41,9 +43,15 @@ li {
 }
 
 input[type=button] {
-  background-color: thistle;
-  font-size: 20px;
+  background-color: black;
+  color: white;
+  font-size: 15px;
+  padding: 15px;
   border: 1px solid white;
+  text-shadow: 4px 4px 4px #aaa;
+  border-radius: 20%;
+  font-family: 'Star Jedi', arial;
+  align: center;
 }
 
 /* CAROUSEL SECTION */
@@ -62,8 +70,8 @@ input[type=button] {
   border: 5px solid white;
 }
 button {
-  background-color: #f44336;
-  font-size: 24px;
+  background-color: white;
+  font-size: 15px;
   padding: 16px;
   border-radius: 50%;
   border: 2px solid black;
@@ -71,7 +79,7 @@ button {
 }
 
 button:hover {
-  background-color: white;
+  background-color: red;
 }
 
 .carousel-images img {
@@ -91,16 +99,30 @@ button:hover {
     background-image: url("images/background2.jpg")
   }
 
+  form {
+    display: flex;
+    margin-left: 800px;
+    display: flex;
+  }
+
   /* characters  */
   .characters {
+    margin: auto;
+    padding: 0'
     display: flex;
     flex-direction: row;
+    /* flex-direction: row;
+    flex-wrap: wrap; */
+    justify-content: space-around;
   }
 
   .characters img {
-    height: 200px;
+    height: 150px;
     width: 200px;
-    padding: 50px;
+    padding: 5px;
+    margin-top: 10px;
     border: 3px solid white;
+    /* margin: auto; */
+  }
 
 }
