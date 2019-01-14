@@ -1,6 +1,9 @@
 # project-1
 Project 1 for GA
 
+#### Link to Live Site
+https://sharonmertens.github.io/project-1/
+
 #### Description
 Learn more about your favorite Star Wars Characters!
 
