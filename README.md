@@ -31,7 +31,7 @@ Learn more about your favorite Star Wars Characters!
 - Create a div class called characters
 - Create divs for each characters like this:
 
-(insert image div class luke)
+![](images/RM_Images/luke.png)
 
 
 #### app.js
