@@ -86,3 +86,8 @@ Learn more about your favorite Star Wars Characters!
 - media query for a min-width of 1000px
 - inside that we want to flex
 - .characters add display: flex / flex-direction: row / flex-wrap: wrap with a width of 80%
+
+## Unsolved problems
+- Connecting the STAR WARS font
+- Want to include a "Which Character of Star Wars are you" Quiz
+- Correct sizing for images on phone
