@@ -38,32 +38,20 @@ Learn more about your favorite Star Wars Characters!
   - $('input[id="luke"]').on('click', (event) => {
 - Call AJAX and use the url: "https://swapi.co/api/people/1"
 - Create an arrow function for data and here we will compile our info for each character:
-  const $div = $('<div>')
-  $('.luke').append($div);
+  - Create a new div and append it to $('.luke')
+  - Create LIs and append them to the new div you created
 
-  const $luke = $('<h2>').text(data.name);
-  $div.append($luke);
+  (insert image use this for ajax)
 
-  const $birthYear = $('<li>').text('Year of Birth: ' + data.birth_year);
-  $div.append($birthYear);
+- Because we want to be able to click the button and have the info appear, then click it again and have the info disappear we need to create an if/else statement.
 
-  const $gender = $('<li>').text('Gender: ' + data.gender);
-  $div.append($gender);
+- if ($(event.currentTarget).parent().children().length === 3) then we want to be able to click and have the information appear
 
-  const $height = $('<li>').text('Height: ' + data.height);
-  $div.append($height);
+- cut and paste all the content from previous steps inside this if/else statement
 
-  const $mass = $('<li>').text('Mass: ' + data.mass);
-  $div.append($mass);
+- else { $(event.currentTarget).parent().children().eq(3).remove(); } this will remove the additional information you appended
 
-  const $eyeColor = $('<li>').text('Eye Color: ' + data.eye_color);
-  $div.append($eyeColor);
-
-  const $hairColor = $('<li>').text('Hair Color: ' + data.hair_color);
-  $div.append($hairColor);
-
-  const $skinColor = $('<li>').text('Skin Color: ' + data.skin_color);
-  $div.append($skinColor);
+- Follow these steps for the remaining characters
 
 ## Star Wars Image CAROUSEL
 
@@ -90,3 +78,11 @@ Learn more about your favorite Star Wars Characters!
 - Inside our event handler for our next class, let's write an if/else statement so that if we go above the amount of images we have, it'll reset the currentImgIndex back to the first one
 - And then we want the next image to show so add $('.carousel-images').children().eq(currentImgIndex).show();
 - Follow same instructions for 'previous' button, except we want to decrement not increment.
+
+## Responsive Design for Mobile
+- .characters we want to make sure it is display: flex / flex-direction: column
+
+## Responsive Design for DESKTOP
+- media query for a min-width of 1000px
+- inside that we want to flex
+- .characters add display: flex / flex-direction: row / flex-wrap: wrap with a width of 80%
