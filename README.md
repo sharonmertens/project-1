@@ -44,7 +44,7 @@ Learn more about your favorite Star Wars Characters!
   - Create a new div and append it to $('.luke')
   - Create LIs and append them to the new div you created
 
-  (insert image use this for ajax)
+  ![](images/RM_Images/ajax.png)
 
 - Because we want to be able to click the button and have the info appear, then click it again and have the info disappear we need to create an if/else statement.
 
