@@ -22,7 +22,7 @@ Learn more about your favorite Star Wars Characters!
 1. link them all up
 2. add jQuery
 
-![](images/RM_Images/Link Up docs.png)
+![](images/RM_Images/Linkup.png)
 
 ## Star Wars Characters
 
