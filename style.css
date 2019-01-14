@@ -6,12 +6,13 @@
 }
 
 body {
-  background-image: url("images/background2.jpg");
+  background-image: url("images/background.jpeg");
   /* font-family: 'Star Jedi', arial; */
   font-family: "Star Wars", arial;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  height: 50%; */
+  /* background-position: center; */
 }
 
 h1 {
