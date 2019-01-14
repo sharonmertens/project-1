@@ -1,26 +1,30 @@
 /* ======== Mobile Design ========= */
 /* -------------------------------- */
+@font-face {
+    font-family: "Star Wars";
+    src: url('boba-fonts_star-jedi/Starjedi.ttf') format('truetype');
+}
 
 body {
   background-image: url("images/background.jpeg");
-  font-family: 'Star Jedi', arial;
+  /* font-family: 'Star Jedi', arial; */
+  font-family: "Star Wars", arial;
 }
 
 h1 {
   color: white;
-  font-family: 'Star Jedi', arial;
   font-size: 48px;
   text-shadow: 4px 4px 4px #aaa;
 }
 
 h2 {
   color: white;
-  font-family: 'Star Jedi', arial;
+
 }
 
 li {
   color: white;
-  font-family: 'Star Jedi', arial;
+
 }
 
 /* CHARACTER SECTION */
@@ -49,7 +53,6 @@ input[type=button] {
   border: 1px solid white;
   text-shadow: 4px 4px 4px #aaa;
   border-radius: 20%;
-  font-family: 'Star Jedi', arial;
   align: center;
 }
 
