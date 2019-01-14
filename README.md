@@ -91,6 +91,6 @@ Learn more about your favorite Star Wars Characters!
 - .characters add display: flex / flex-direction: row / flex-wrap: wrap with a width of 80%
 
 ## Unsolved problems
-- Connecting the STAR WARS font
+- Connecting the STAR WARS font (happened on safari but not on chrome)
 - Want to include a "Which Character of Star Wars are you" Quiz
 - Correct sizing for images on phone
