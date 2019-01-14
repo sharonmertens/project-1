@@ -24,7 +24,7 @@ Learn more about your favorite Star Wars Characters!
 ## Star Wars Characters
 
 #### Set up html
-- Create an <h1> with: 'STAR WARS: A Character Story'
+- Create an h1 with: 'STAR WARS: A Character Story'
 - Create a div class called characters
 - Create divs for each characters like this:
 
