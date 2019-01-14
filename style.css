@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url("images/background.jpeg");
+  background-image: url("images/background2.jpg");
   /* font-family: 'Star Jedi', arial; */
   font-family: "Star Wars", arial;
 }
@@ -99,7 +99,7 @@ button:hover {
 @media (min-width: 1000px) {
 
     body {
-      background-image: url("images/background2.jpg");
+      background-image: url("images/background.jpeg");
       font-family: "Star Wars", arial;
     }
 
